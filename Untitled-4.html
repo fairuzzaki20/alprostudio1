@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AlproStudio · Kuasai Teknologi Masa Depan</title>
+  <!-- Google Fonts: Inter & Space Grotesk untuk kesan modern & teknologis -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free CDN) untuk ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0A0C10;
+      font-family: 'Inter', sans-serif;
+      color: #EDF2FF;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    /* background subtle grid & neon glow */
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(0, 255, 196, 0.08), rgba(5, 10, 25, 0.95));
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .grid-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 200, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 200, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      position: relative;
+    }
+
+    /* header / navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0, 255, 200, 0.25);
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .logo h1 {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      font-size: 1.9rem;
+      background: linear-gradient(135deg, #FFFFFF 30%, #00FFCC 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      background: rgba(0, 255, 200, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #A0F5E6;
+      border: 0.5px solid rgba(0, 255, 200, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #CCE6FF;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #00FFCC;
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      border: 1.5px solid rgba(0, 255, 200, 0.7);
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem;
+      font-weight: 600;
+      color: #00FFCC;
+      transition: 0.25s;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(0, 255, 200, 0.15);
+      box-shadow: 0 0 8px rgba(0,255,200,0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 2rem 0 3rem 0;
+    }
+
+    .hero-badge {
+      background: rgba(0, 255, 200, 0.12);
+      width: fit-content;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(0,255,200,0.3);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #FFFFFF, #A0F0FF, #8AFFE6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-highlight {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #B9E2FF;
+      max-width: 680px;
+      border-left: 3px solid #00FFCC;
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: #B0C7E0;
+      max-width: 620px;
+      line-height: 1.5;
+    }
+
+    .btn-primary {
+      background: linear-gradient(105deg, #00CCA6, #00FFCC);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 48px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #08141E;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(0, 255, 200, 0.2);
+      transition: 0.2s;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .btn-primary i {
+      font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.02);
+      background: linear-gradient(105deg, #00E0B5, #1EFFD0);
+      box-shadow: 0 8px 25px rgba(0, 255, 200, 0.4);
+    }
+
+    /* Cards / program berjalan */
+    .program-section {
+      margin: 4rem 0 3rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title i {
+      color: #00FFCC;
+      font-size: 2rem;
+    }
+
+    .program-card {
+      background: rgba(12, 20, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 36px;
+      border: 1px solid rgba(0, 255, 200, 0.25);
+      padding: 1.8rem 2rem;
+      transition: 0.25s;
+      box-shadow: 0 12px 28px -12px rgba(0,0,0,0.4);
+    }
+
+    .program-card:hover {
+      border-color: #00FFCC;
+      transform: translateY(-5px);
+      background: rgba(16, 28, 40, 0.85);
+    }
+
+    .program-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+    }
+
+    .badge-beasiswa {
+      background: #00AA7F20;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #A0FFE0;
+      border: 0.5px solid #00FFAA;
+    }
+
+    .program-desc {
+      color: #C7DFFF;
+      margin: 1rem 0 1.5rem;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .mentor {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      color: #8BB5E0;
+    }
+
+    .btn-link {
+      background: transparent;
+      border: 1px solid #00FFCC80;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #CCFFF5;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-link:hover {
+      background: #00FFCC20;
+      border-color: #00FFCC;
+    }
+
+    /* stats bar */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(0, 15, 20, 0.7);
+      border-radius: 80px;
+      padding: 0.8rem 2rem;
+      margin: 3rem 0 2rem;
+      border: 1px solid rgba(0, 255, 200, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    .stat-item {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .stat-item i {
+      color: #00FFCC;
+    }
+
+    .stat-highlight {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-right: 5px;
+      color: white;
+    }
+
+    .btn-masuk {
+      background: rgba(0, 255, 200, 0.1);
+      border: 1.5px solid #00FFCC;
+      padding: 0.5rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn-masuk:hover {
+      background: #00FFCC;
+      color: #0A0C10;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6082a0;
+      border-top: 1px solid rgba(0,255,200,0.15);
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 750px) {
+      .container {
+        padding: 1.5rem;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .stats-row {
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 32px;
+        padding: 1.2rem;
+      }
+      .program-title {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    button, .btn-link, .btn-masuk, .btn-primary {
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="grid-pattern"></div>
+
+<div class="container">
+  <!-- navbar dengan brand AlproStudio -->
+  <div class="navbar">
+    <div class="logo">
+      <h1>AlproStudio</h1>
+      <span class="badge">next-gen tech</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Karier</a>
+      <a href="#">Promo</a>
+      <a href="#" class="btn-outline-light">Mulai Gratis</a>
+    </div>
+  </div>
+
+  <!-- Hero utama: KUASAI SKILL TEKNOLOGI MASA DEPAN -->
+  <div class="hero">
+    <div class="hero-badge">
+      <i class="fas fa-bolt" style="margin-right: 6px;"></i> AlproStudio · revolusi skill digital
+    </div>
+    <h2>KUASAI SKILL TEKNOLOGI MASA<br>Depan: Coding, Hacking & AI</h2>
+    <div class="hero-highlight">
+      Akses ke Kurikulum Industri yang Terstruktur dan Up-to-Date dari Dasar hingga Studi Kasus Lanjutan.
+    </div>
+    <div class="hero-desc">
+      Belajar tanpa rasa bingung, didampingi Mentor Praktisi dan Komunitas Belajar yang suportif.
+    </div>
+    <div class="btn-primary">
+      <i class="fas fa-rocket"></i> Mulai Belajar Sekarang ➡️
+    </div>
+  </div>
+
+  <!-- Program yang Sedang Berjalan -->
+  <div class="program-section">
+    <div class="section-title">
+      <i class="fas fa-calendar-alt"></i> 
+      <span>Program yang Sedang Berjalan</span>
+    </div>
+    <div class="program-card">
+      <div class="program-title">
+        <span><i class="fas fa-shield-alt" style="color:#00FFCC; margin-right: 12px;"></i> Beasiswa Basic Cybersecurity</span>
+        <span class="badge-beasiswa"><i class="fas fa-graduation-cap"></i> Gratis · Akses Penuh</span>
+      </div>
+      <div class="program-desc">
+        Program beasiswa kelas online gratis untuk mempelajari dasar keamanan siber dari nol. 
+        Belajar mandiri berbasis video langsung dari praktisi ahli.
+      </div>
+      <div class="mentor">
+        <i class="fas fa-chalkboard-user"></i> 
+        <span>Mentor: <strong>Mahrus Qusaery</strong> — Cybersecurity Specialist & Praktisi</span>
+      </div>
+      <div class="btn-link" id="gabungBtn">
+        <i class="fas fa-arrow-right"></i> Gabung Program ➡️
+      </div>
+    </div>
+  </div>
+
+  <!-- Bar KARIER → PROMO → MULAI GRATIS | MASUK -->
+  <div class="stats-row">
+    <div class="stat-item"><i class="fas fa-chart-line"></i> <span><span class="stat-highlight">KARIER</span> siap industri</span></div>
+    <div class="stat-item"><i class="fas fa-tag"></i> <span><span class="stat-highlight">PROMO</span> early access</span></div>
+    <div class="stat-item"><i class="fas fa-play-circle"></i> <span><span class="stat-highlight">MULAI GRATIS</span> tanpa ribet</span></div>
+    <div class="btn-masuk" id="masukBtn"><i class="fas fa-key"></i> MASUK</div>
+  </div>
+
+  <footer>
+    <i class="fas fa-code"></i> AlproStudio — empower the next gen | #Coding #Hacking #AI
+  </footer>
+</div>
+
+<!-- interaksi ringan (alert demonstrasi, sesuai permintaan interaksi branding) -->
+<script>
+  // memberikan sedikit dinamika sesuai brand + tombol aksi
+  const startBtn = document.querySelector('.btn-primary');
+  const gabungBtn = document.getElementById('gabungBtn');
+  const masukBtn = document.getElementById('masukBtn');
+  const navMulai = document.querySelector('.btn-outline-light');
+  const promoLink = document.querySelector('.nav-links a[href="#"]:nth-child(2)');
+  const careerLink = document.querySelector('.nav-links a[href="#"]:first-child');
+
+  // Fungsi notifikasi interaktif (tidak mengganggu)
+  function showNotif(message, type = 'info') {
+    // membuat notifikasi mini modern
+    const notif = document.createElement('div');
+    notif.style.position = 'fixed';
+    notif.style.bottom = '24px';
+    notif.style.right = '24px';
+    notif.style.background = '#10161E';
+    notif.style.backdropFilter = 'blur(16px)';
+    notif.style.border = `1px solid ${type === 'success' ? '#00FFCC' : '#3B82F6'}`;
+    notif.style.borderRadius = '40px';
+    notif.style.padding = '12px 24px';
+    notif.style.color = '#E0F2FE';
+    notif.style.fontWeight = '500';
+    notif.style.fontSize = '0.85rem';
+    notif.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+    notif.style.zIndex = '9999';
+    notif.style.fontFamily = 'Inter, sans-serif';
+    notif.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-bolt'}" style="margin-right: 8px; color: #00FFCC;"></i> ${message}`;
+    document.body.appendChild(notif);
+    setTimeout(() => {
+      notif.style.opacity = '0';
+      notif.style.transition = 'opacity 0.3s';
+      setTimeout(() => notif.remove(), 400);
+    }, 2800);
+  }
+
+  // Tombol mulai belajar sekarang
+  if (startBtn) {
+    startBtn.addEventListener('click', () => {
+      showNotif('✨ Akses ke kurikulum coding, hacking & AI telah dibuka! Selamat belajar di AlproStudio.', 'success');
+    });
+  }
+
+  // Gabung program beasiswa
+  if (gabungBtn) {
+    gabungBtn.addEventListener('click', () => {
+      showNotif('🎓 Pendaftaran Beasiswa Basic Cybersecurity berhasil! Cek email kamu untuk video exclusive dari Mahrus Qusaery.', 'success');
+    });
+  }
+
+  // MASUK button
+  if (masukBtn) {
+    masukBtn.addEventListener('click', () => {
+      showNotif('🔐 Masuk ke dashboard siswa AlproStudio — akses mentor & komunitas supportif.', 'info');
+    });
+  }
+
+  // Navigasi "Mulai Gratis"
+  if (navMulai) {
+    navMulai.addEventListener('click', (e) => {
+      e.preventDefault();
+      showNotif('🚀 Mulai gratis sekarang! Dapatkan modul pertama tanpa biaya.', 'success');
+    });
+  }
+
+  // KARIER link
+  if (careerLink) {
+    careerLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showNotif('💼 Jelajahi jalur karier: Cybersecurity Engineer, AI Specialist, dan Ethical Hacker.', 'info');
+    });
+  }
+
+  // PROMO link
+  const promoItem = document.querySelector('.nav-links a:nth-child(2)');
+  if (promoItem) {
+    promoItem.addEventListener('click', (e) => {
+      e.preventDefault();
+      showNotif('🏷️ PROMO terbatas! Diskon 40% untuk bootcamp AI & Hacking — kode ALPRO24', 'info');
+    });
+  }
+
+  // klik pada stat item menarik juga memberi semangat (opsional)
+  const statDivs = document.querySelectorAll('.stat-item');
+  statDivs.forEach(stat => {
+    stat.style.cursor = 'pointer';
+    stat.addEventListener('click', () => {
+      if (stat.innerText.includes('KARIER')) showNotif('📈 Bangun portofolio profesional bersama mentor praktisi.');
+      else if (stat.innerText.includes('PROMO')) showNotif('🎁 Promo spesial untuk early bird: diskon hingga 50%!');
+      else if (stat.innerText.includes('MULAI GRATIS')) showNotif('📘 Daftar gratis dan akses 3 modul pertama sekarang juga.');
+    });
+  });
+
+  // efek hover tambahan pada logo (hanya estetika)
+  const logoEl = document.querySelector('.logo h1');
+  if (logoEl) {
+    logoEl.addEventListener('mouseenter', () => {
+      logoEl.style.transition = '0.2s';
+      logoEl.style.textShadow = '0 0 6px #00FFCC80';
+    });
+    logoEl.addEventListener('mouseleave', () => {
+      logoEl.style.textShadow = 'none';
+    });
+  }
+</script>
+</body>
+</html>
